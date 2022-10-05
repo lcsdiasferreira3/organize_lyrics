@@ -11,13 +11,22 @@
                     >Customize the Lyric</v-card-title
                   >
                   <v-divider></v-divider>
-                  <v-card-title>Music</v-card-title>
-                  <v-divider></v-divider>
-                  <v-card-subtitle class="pb-0">teste</v-card-subtitle>
-                  <v-card-subtitle class="pt-0">teste</v-card-subtitle>
-                  <v-divider></v-divider>
-                </v-card></div
-            ></v-col>
+                  <span v-if="this.lyrics">
+                    <v-card-title>Music</v-card-title>
+                    <v-divider></v-divider>
+                    <v-card-subtitle class="pb-0">{{
+                      this.lyrics.lyrics_body
+                    }}</v-card-subtitle>
+                    <v-divider></v-divider>
+                  </span>
+                  <div v-if="!this.lyrics">
+                    <v-card-subtitle class="justify-center d-flex"
+                      >Drop the track here</v-card-subtitle
+                    >
+                  </div>
+                </v-card>
+              </div></v-col
+            >
           </v-row>
           <v-row class="d-flex justify-center">
             <v-col cols="7"
@@ -45,7 +54,7 @@
                 <v-card-title class="d-flex justify-center">Songs</v-card-title>
                 <v-divider></v-divider>
                 <div class="d-flex align-center justify-center siz">
-                  <v-card-subtitle>Search for any song!</v-card-subtitle>
+                  <v-card-subtitle>{{ this.result }}</v-card-subtitle>
                 </div>
               </v-card>
             </v-col>
@@ -61,7 +70,22 @@
 
 export default {
   name: "Home",
+
+  data() {
+    return {
+      lyrics: null,
+      result: "Search for any song!",
+    };
+  },
+
   components: {},
+
+  watch: {
+    "$store.state.musixmatch.data": function () {
+      this.lyrics = this.$store.state.musixmatch.data.data.message.body.lyrics;
+      console.log(this.lyrics);
+    },
+  },
 };
 </script>
 
