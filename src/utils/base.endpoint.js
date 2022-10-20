@@ -1,6 +1,6 @@
 const baseEndpoint = {
-  baseEndpoint: "/musixmatch",
-  apiKey: "&apikey=cc0830fd8b34befc3eda0a4ac9fb568e",
+  baseEndpoint: "/vagalume",
+  apiKey: "13606a82699f7b5e614cd8e1c6107232",
 };
 
 export default baseEndpoint;

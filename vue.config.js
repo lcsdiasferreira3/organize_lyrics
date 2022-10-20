@@ -3,14 +3,14 @@ module.exports = {
 
   devServer: {
     proxy: {
-      "/musixmatch": {
+      "/vagalume": {
         //CORS PROBLEM
         ws: true,
         changeOrigin: true,
         secure: false,
         logLevel: "debug",
-        pathRewrite: { "/musixmatch": "/" },
-        target: "http://api.musixmatch.com/ws/1.1",
+        pathRewrite: { "/vagalume": "/" },
+        target: "https://api.vagalume.com.br/",
       },
     },
   },

@@ -3,20 +3,25 @@ import apiWithAxios from "../../service/apiWithAxios";
 export default {
   state: {
     data: null,
+    dataTrack: null,
   },
   mutations: {
     dataR(state, data) {
       state.data = data;
     },
+    dataT(state, data) {
+      state.dataTrack = data;
+    },
   },
   actions: {
-    getTrack(/*{ commit }*/ { nameTrack, nameAuthor }) {
+    getTrack({ commit }, { track }) {
       return new Promise((resolve, reject) => {
         // commit("loading", true);
         apiWithAxios
-          .getTrack(nameTrack, nameAuthor)
+          .getTrack(track)
           .then((result) => {
             resolve(result);
+            commit("dataT", result);
             // commit("loading", false);
           })
           .catch((err) => {
@@ -33,11 +38,9 @@ export default {
           .then((result) => {
             resolve(result);
             commit("dataR", result);
-            console.log(result);
           })
           .catch((err) => {
             reject(err);
-            console.log(err);
 
             // commit("loading", false);
           });

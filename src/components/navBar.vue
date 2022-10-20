@@ -10,6 +10,7 @@
             single-line
             solo-inverted
             v-model="search"
+            placeholder="Type for any song"
           ></v-text-field>
         </v-col>
         <v-col cols="2" class="d-flex align-center pl-0 pr-0">
@@ -31,8 +32,8 @@ export default {
   methods: {
     getLyric() {
       this.$store
-        .dispatch("getLyrics", {
-          id: this.search,
+        .dispatch("getTrack", {
+          track: this.search,
         })
         .then(() => {})
         .catch(() => {});

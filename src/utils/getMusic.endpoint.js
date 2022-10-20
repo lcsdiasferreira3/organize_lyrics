@@ -1,18 +1,20 @@
 import baseEndpoint from "./base.endpoint";
 
 const getMusicEndpoint = {
-  getTrack: (nameTrack, nameAuthor) =>
+  getTrack: (track) =>
     baseEndpoint.baseEndpoint +
-    "track.search?q_track=" +
-    nameTrack +
-    "&q_artist=" +
-    nameAuthor +
-    baseEndpoint.apiKey,
+    "search.excerpt?" +
+    "apikey=" +
+    baseEndpoint.apiKey +
+    "&q=" +
+    track,
 
   getLyrics: (id) =>
     baseEndpoint.baseEndpoint +
-    "matcher.lyrics.get?track_id=" +
+    "search.php?" +
+    "musid=" +
     id +
+    "&apikey=" +
     baseEndpoint.apiKey,
 };
 
